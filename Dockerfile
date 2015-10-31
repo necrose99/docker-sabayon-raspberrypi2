@@ -8,7 +8,10 @@ RUN rsync -av -H -A -X --delete-during "rsync://rsync.at.gentoo.org/gentoo-porta
 # Adding repository url
 ADD ./confs/entropy_arm /etc/entropy/repositories.conf.d/entropy_arm
 
-RUN equo up && equo u && equo i openssh networkmanager
+RUN equo up && equo u && equo i openssh networkmanager \
+	app-misc/sabayon-live app-misc/sabayon-skel net-misc/ntp \
+	sys-apps/keyboard-configuration-helpers sys-kernel/linux-raspberry \
+	sys-process/vixie-cron
 
 # Cleaning accepted licenses
 RUN rm -rf /etc/entropy/packages/license.accept
