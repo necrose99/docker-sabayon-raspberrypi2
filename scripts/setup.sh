@@ -3,11 +3,6 @@
 /usr/sbin/env-update
 . /etc/profile
 
-setup_boot
-setup_users
-setup_bootfs_fstab "vfat"
-
-
 sd_enable() {
     local srv="${1}"
     local ext=".${2:-service}"
@@ -89,5 +84,8 @@ setup_users() {
     ) || return 1
 }
 
+setup_boot
+setup_users
+setup_bootfs_fstab "vfat"
 
 exit 0
