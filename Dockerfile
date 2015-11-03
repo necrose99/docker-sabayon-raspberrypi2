@@ -8,16 +8,20 @@ RUN rsync -av "rsync://rsync.at.gentoo.org/gentoo-portage/licenses/" "/usr/porta
 # Adding repository url
 ADD ./confs/entropy_arm /etc/entropy/repositories.conf.d/entropy_arm
 
-RUN equo rescue spmsync &&  equo up && equo u && equo i openssh networkmanager \
+RUN equo rescue spmsync &&  equo up && equo u && \
+  equo i net-misc/openssh net-misc/networkmanager \
 	app-misc/sabayon-live app-misc/sabayon-skel net-misc/ntp \
-	sys-apps/keyboard-configuration-helpers raspberry-userland raspberry-sources \
-	sabayon-version systemd \
-	sys-process/vixie-cron sys-kernel/raspberrypi-image
+	sys-apps/keyboard-configuration-helpers media-libs/raspberrypi-userland-0_pre20150921 \
+	sys-apps/systemd sys-kernel/raspberrypi-image-4.0.4_pre-r20150523#4.0.4-raspberrypi-20150523 sys-kernel/raspberrypi-sources-3.10.1_pre-r20130719 \
+  sys-process/vixie-cron
 
-# Cleaning accepted licenses
+
+# Cleaning accepted license2s
 RUN rm -rf /etc/entropy/packages/license.accept
 
 RUN echo -5 | equo conf update
+
+RUN wget https://raw.githubusercontent.com/Hexxeh/rpi-update/master/rpi-update -O /usr/sbin/rpi-update && chmod +x /usr/sbin/rpi-update
 
 # Perform post-upgrade tasks (mirror sorting, updating repository db)
 ADD ./scripts/setup.sh /setup.sh
