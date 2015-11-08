@@ -12,8 +12,8 @@ RUN equo rescue spmsync &&  equo up && equo u && \
   equo i net-misc/openssh net-misc/networkmanager \
 	app-misc/sabayon-live app-misc/sabayon-skel net-misc/ntp \
 	sys-apps/keyboard-configuration-helpers media-libs/raspberrypi-userland-0_pre20150921 \
-	sys-apps/systemd sys-kernel/raspberrypi-image-4.0.4_pre-r20150523#4.0.4-raspberrypi-20150523 sys-kernel/raspberrypi-sources-3.10.1_pre-r20130719 \
-  sys-process/vixie-cron
+	sys-apps/systemd sys-kernel/raspberrypi-sources-3.10.1_pre-r20130719 app-misc/sabayon-version \
+        sys-process/vixie-cron
 
 
 # Cleaning accepted license2s
@@ -34,4 +34,4 @@ ENV HOME /root
 WORKDIR /
 
 # Define standard volumes
-VOLUME ["/usr/portage", "/usr/portage/distfiles", "/usr/portage/packages", "/var/lib/entropy/client/packages"]
+#VOLUME ["/usr/portage", "/usr/portage/distfiles", "/usr/portage/packages", "/var/lib/entropy/client/packages"]
