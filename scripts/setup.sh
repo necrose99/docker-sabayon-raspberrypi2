@@ -57,6 +57,9 @@ setup_bootfs_fstab() {
 	echo "/dev/mmcblk0p1  /boot  ${boot_part_type}  defaults  0 2" >> /etc/fstab
 }
 
+setup_rootfs_fstab() {
+	echo "/dev/mmcblk0p2 / ext4 noatime 0 1" >> /etc/fstab 
+}
 
 setup_boot() {
     sd_enable sshd
@@ -86,6 +89,8 @@ setup_users() {
 
 setup_boot
 setup_users
+rm -rfv /etc/fstab
 setup_bootfs_fstab "vfat"
+setup_rootfs_fstab
 
 exit 0
