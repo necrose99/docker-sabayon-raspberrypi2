@@ -9,7 +9,7 @@ RUN rsync -av "rsync://rsync.at.gentoo.org/gentoo-portage/licenses/" "/usr/porta
 ADD ./confs/entropy_arm /etc/entropy/repositories.conf.d/entropy_arm
 
 RUN equo rescue spmsync &&  equo up && equo u && \
-  equo i net-misc/openssh net-misc/networkmanager \
+  equo i app-admin/sudo net-misc/openssh net-misc/networkmanager \
 	app-misc/sabayon-live app-misc/sabayon-skel net-misc/ntp \
 	sys-apps/keyboard-configuration-helpers media-libs/raspberrypi-userland-0_pre20150921 \
 	sys-apps/systemd sys-kernel/raspberrypi-sources-3.10.1_pre-r20130719 app-misc/sabayon-version \
