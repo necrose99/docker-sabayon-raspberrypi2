@@ -83,7 +83,7 @@ setup_users() {
         echo "sabayon:sabayon" | chpasswd
 	
 	# setup sudoers
-	[ -e /etc/sudoers ] && echo "sabayon ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
+	[ -e /etc/sudoers ] && echo "sabayon ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
         # also add "sabayon" to disk group
         usermod -a -G disk sabayon
