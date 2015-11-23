@@ -11,7 +11,7 @@ RUN rsync -av "rsync://rsync.at.gentoo.org/gentoo-portage/licenses/" "/usr/porta
 # Adding repository url
 ADD ./confs/entropy_arm /etc/entropy/repositories.conf.d/entropy_arm
 
-ADD ./ext/qemu-arm-binfmt /usr/bin/qemu-arm-binfmt
+ADD ./ext/qemu-arm-static /usr/bin/qemu-arm-binfmt
 
 RUN equo rescue spmsync &&  equo up && equo u && \
   equo i app-admin/sudo net-misc/openssh net-misc/networkmanager \
